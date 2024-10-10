@@ -5,7 +5,19 @@ export default {
       name: 'John Snow',
       status: 'active',
       tasks: ['Task One', 'Task Two', 'Task Three'],
+      link: 'https://google.com',
     };
+  },
+  methods: {
+    toggleStatus() {
+      if (this.status === 'active') {
+        this.status = 'pending';
+      } else if (this.status === 'pending') {
+        this.status = 'inactive';
+      } else {
+        this.status = 'active';
+      }
+    },
   },
 };
 </script>
@@ -19,6 +31,9 @@ export default {
   <ul>
     <li v-for="task in tasks" :key="task">{{ task }}</li>
   </ul>
+  <a :href="link">Click for google</a>
+  <br />
+  <button @click="toggleStatus">Change Status</button>
 </template>
 
 <style scoped></style>
